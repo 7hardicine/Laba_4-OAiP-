@@ -1,0 +1,46 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <windows.h>
+#include <locale.h>
+#include <math.h>
+
+void main()
+{
+	setlocale(LC_ALL, "rus");
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+
+	int n, k = 0, kf;
+	double a, b, h, x, Y, S = 0, fact = 1;
+
+	puts("Введите a (начальное значение), b (конечное значение), h (шаг), и n (верхняя граница суммирования):");
+	while (scanf("%lf %lf %lf %d", &a, &b, &h, &n) != 4 || (a > b && h > 0) || (a < b && h < 0) || n < 1)
+	{
+		system("cls");
+		while (getchar() != '\n');
+		puts("Вы ввели что-то не так\nСкорее всего со значения a нельзя дойти до значения b или n < 1\nВведите значения a, b, h и n заново:");
+	}
+
+	x = a;
+
+	for (int i = 0; i <= abs((b - a) / h); i++) // Табличка
+	{
+		Y = (exp(x) + exp(-x)) / 2; // Вычисляем Y
+		for (k; k <= n; k++) // Считаем S
+		{
+			kf = 2*k;
+			for (kf; kf > 1; kf--) // Считаем факториал
+			{
+				fact *= kf;
+			}
+			S += pow(x, 2 * k) / fact; // Складываем сумму
+			fact = 1; // Приводим факториал к единице
+		}
+		printf("%3d | x = %5.2lf | Y = %-20.10lf | S = %.10lf\n", i + 1, x, Y, S); // Выводим значения
+		x += h; // Увеличиваем x на шаг
+		k = 0; // Обнуляем счётчик для суммы
+		S = 0; // Обнуляем сумму
+	}
+
+	system("pause");
+}
