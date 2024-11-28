@@ -14,7 +14,7 @@ void main()
 	double xn, xk, dx, y, x;
 
 	puts("Введите x начальное, x конечное и шаг x:");
-	while (scanf("%lf %lf %lf", &xn, &xk, &dx) < 3 || (xn > xk && dx > 0) || (xn < xk && dx < 0))
+	while (scanf("%lf %lf %lf", &xn, &xk, &dx) < 3 || (xn > xk && dx > 0) || (xn < xk && dx < 0)) // Вводим данные и проверяем на выполнимость программы
 	{
 		system("cls");
 		while (getchar() != '\n');
@@ -24,7 +24,7 @@ void main()
 
 	x = xn;
 
-	for (int i = 0; i <= abs(((xk - xn) / dx)); i++)
+	for (int i = 0; i <= abs(((xk - xn) / dx)); i++) // Вычисляем y
 	{
 		if (x >= 4)
 		{
