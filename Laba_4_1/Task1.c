@@ -76,6 +76,7 @@ void main()
 	}
 
 	printf("x нач. = %.1lf; x кон. = %.1lf; шаг x = %.1lf; a = %.1lf; b = %.1lf\n", xn, xk, dx, a, b);
+	puts("|---|-------|--------------|\n| # |   x   |       y      |\n|---|-------|--------------|");
 
 	i = 0;
 	x = xn;
@@ -90,7 +91,7 @@ void main()
 		while (abs((xk - xn) / dx) >= i)
 		{
 			y = exp(-x) * (a + b * x) / (log(abs(x + 1)) * log(abs(x + 1)));
-			printf("%3d | x = %5.1lf | y = %5.15lf\n", i + 1, x, y);
+			printf("|%2d | %5.1lf | %5.10lf |\n|---|-------|--------------|\n", i + 1, x, y);
 			i++;
 			x += dx;
 		}
